@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Profile View</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>👤 Scanned Profile</h1>
+    <div id="profile"></div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    if (id) {
+      const data = JSON.parse(localStorage.getItem(id));
+
+      if (data) {
+        document.getElementById("profile").innerHTML = `
+          <h2>${data.name}</h2>
+          <p>${data.email}</p>
+          <img src="${data.photo}" alt="Profile Photo" style="width:150px;border-radius:10px;margin-top:10px;">
+        `;
+      } else {
+        document.getElementById("profile").innerHTML = "<p>Profile not found!</p>";
+      }
+    } else {
+      document.getElementById("profile").innerHTML = "<p>Invalid QR code!</p>";
+    }
+  </script>
+</body>
+</html>
