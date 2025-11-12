@@ -26,7 +26,8 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
 
     // ✅ Fixed QR URL (for local files too)
     const basePath = window.location.href.replace("index.html", "");
-    const qrUrl = `${basePath}scan.html?id=${userId}`;
+    const qrUrl = `https://jakaria53.github.io/QR-Code-with-Profile/scan.html?id=${userId}`;
+
 
     const qr = new QRious({
       element: document.getElementById("qrCode"),
